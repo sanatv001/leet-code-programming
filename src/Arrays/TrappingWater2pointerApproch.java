@@ -13,23 +13,14 @@ public class TrappingWater2pointerApproch {
         int trappedwater=0;
 
         while (left<right){
-
-            if(trapArr[left]<trapArr[right]){
-                if (trapArr[left]>=leftmax){
-                    leftmax=trapArr[left];
-                }
-                else {
-                    trappedwater+=leftmax-trapArr[left];
-                }
+            if(trapArr[left]<=trapArr[right]){
+                leftmax=Math.max(leftmax,trapArr[left]);
+                trappedwater+=leftmax-trapArr[left];
                 left++;
             }
             else {
-                if (trapArr[right]>=rightmax){
-                    rightmax=trapArr[right];
-                }
-                else {
-                    trappedwater+=rightmax-trapArr[right];
-                }
+                rightmax=Math.max(rightmax,trapArr[right]);
+                trappedwater+=rightmax-trapArr[right];
                 right--;
             }
         }
